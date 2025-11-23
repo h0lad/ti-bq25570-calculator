@@ -260,7 +260,7 @@ class CLI:
             epilog="""Examples:
 
   # Common rails
-  bq25570_calc --vout 1.8 3.3
+  bq25570_calc --vout 3.3
 
   # LiPo 1-cell (VBAT_OV = 4.2V)
   bq25570_calc --vbat-ov 4.2 --never-exceed-ov
@@ -270,7 +270,7 @@ class CLI:
 """
         )
 
-        self.parser.add_argument("--vout", nargs="*", type=float, default=[1.8, 3.0, 3.3],
+        self.parser.add_argument("--vout", nargs="*", type=float, default=[3.3],
             help="Target VOUT values (V).")
         self.parser.add_argument("--vbat-ov", type=float, default=None,
             help="Target VBAT_OV (V).")
