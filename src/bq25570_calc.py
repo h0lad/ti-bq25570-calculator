@@ -162,7 +162,6 @@ class Optimizer:
                 s = r1 + r2
                 if s > self.rsum_max:
                     continue
-                    continue
                 v = vfunc(r1, r2)
                 if never_exceed is not None:
                     vmin, vmax = WorstCase.two_res_bounds(
@@ -186,7 +185,6 @@ class Optimizer:
                 for r3 in self.pool:
                     s = r1 + r2 + r3
                     if s > self.rsum_max:
-                        continue
                         continue
                     vh = Calculator.vbat_ok_hyst(r1, r2, r3)
                     if not self.limits.ok_relationships(vp, vh):
