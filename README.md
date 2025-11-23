@@ -7,9 +7,9 @@ Meaning:
  - ROUT1, ROUT2
  - ROV1, ROV2
 
-As tolerances are highly critical in the design it calculates the voltage ranges based on 1% and 10% precision resistors and VBIAS tolerance. Per default it uses the E24 resistor series which is the most established one in (home) labs -with ``--series E96`` you can switch to the E96 series.
+As tolerances are highly critical in the design it calculates the voltage ranges based on 1% and 10% precision resistors and VBIAS tolerance. Per default it uses the E24 resistor series but it can be switched to E96.
 
-The code isn't the most beautiful in town and a few volate boundaries are hard-coded and not generalized. Feel free to make pull requests.
+Feel free to make pull requests.
 
 ## Commandline
 
