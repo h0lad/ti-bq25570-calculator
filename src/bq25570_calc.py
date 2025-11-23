@@ -205,10 +205,10 @@ class Formatter:
     @staticmethod
     def ohm(x: float) -> str:
         if x >= 1e6:
-            return f"{x/1e6:.2f} MΩ"
+            return f"{x/1e6:.2f}MΩ"
         if x >= 1e3:
-            return f"{x/1e3:.0f} kΩ"
-        return f"{x:.0f} Ω"
+            return f"{x/1e3:.0f}kΩ"
+        return f"{x:.0f}Ω"
 
     @staticmethod
     def print_two_section(title: str, rows: Iterable[TwoResCandidate], vfunc: Callable[..., float], tol: float) -> None:
@@ -247,8 +247,8 @@ class Formatter:
                 f"{Formatter.ohm(row.r2)}  "
                 f"{Formatter.ohm(row.r3)}  "
                 f"{Formatter.ohm(row.rsum)}  "
-                f"VBAT_OK_PROG={row.v_prog:.3f} V [1% {vpmin1:.3f}..{vpmax1:.3f}; 10% {vpmin10:.3f}..{vpmax10:.3f}]  "
-                f"VBAT_OK_HYST={row.v_hyst:.3f} V [1% {vhmin1:.3f}..{vhmax1:.3f}; 10% {vhmin10:.3f}..{vhmax10:.3f}]"
+                f"VBAT_OK_PROG={row.v_prog:.3f}V [1% {vpmin1:.3f}..{vpmax1:.3f}; 10% {vpmin10:.3f}..{vpmax10:.3f}]  "
+                f"VBAT_OK_HYST={row.v_hyst:.3f}V [1% {vhmin1:.3f}..{vhmax1:.3f}; 10% {vhmin10:.3f}..{vhmax10:.3f}]"
             )
 
 class CLI:
@@ -262,7 +262,7 @@ class CLI:
   # Common rails
   bq25570_calc --vout 1.8 3.3
 
-  # LiPo 1-cell (VBAT_OV = 4.2 V)
+  # LiPo 1-cell (VBAT_OV = 4.2V)
   bq25570_calc --vbat-ov 4.2 --never-exceed-ov
 
   # Battery-Good window
@@ -327,7 +327,7 @@ class CLI:
         if '--vout' in sys.argv:
             for v in args.vout:
                 rows = opt.search_two(v, Calculator.vout, target_checker=limits.allow_vout_target)
-                Formatter.print_two_section(f"VOUT = {v:.3f} V", rows, Calculator.vout, args.tolerance)
+                Formatter.print_two_section(f"VOUT = {v:.3f}V", rows, Calculator.vout, args.tolerance)
 
         # Print VBAT_OV section
         if '--vbat-ov' in sys.argv:
@@ -338,7 +338,7 @@ class CLI:
                 tol_for_ne=0.01,
                 target_checker=limits.allow_vbat_ov_target
             )
-            title = f"VBAT_OV = {args.vbat_ov:.3f} V"
+            title = f"VBAT_OV = {args.vbat_ov:.3f}V"
             if args.never_exceed_ov:
                 title += " (NEVER-EXCEED@1%)"
             Formatter.print_two_section(title, rows_ov, Calculator.vbat_ov, args.tolerance)
@@ -346,7 +346,7 @@ class CLI:
         # Print VBAT_OK section
         if '--vbat-ok-prog' in sys.argv and '--vbat-ok-hyst' in sys.argv:
             rows_ok = opt.search_ok(args.vbat_ok_prog, args.vbat_ok_hyst)
-            title = f"VBAT_OK PROG={args.vbat_ok_prog:.3f} V HYST={args.vbat_ok_hyst:.3f} V"
+            title = f"VBAT_OK PROG={args.vbat_ok_prog:.3f}V HYST={args.vbat_ok_hyst:.3f}V"
             Formatter.print_ok_section(title, rows_ok, args.tolerance)
 
 if __name__ == "__main__":
