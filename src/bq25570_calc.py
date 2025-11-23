@@ -225,7 +225,7 @@ class Formatter:
                 f"{Formatter.ohm(row.r1)}  "
                 f"{Formatter.ohm(row.r2)}  "
                 f"{Formatter.ohm(row.rsum)}  "
-                f"{row.v_nom:.3f} V  "
+                f"{row.v_nom:.3f}V  "
                 f"1% [{m1:.3f}..{M1:.3f}]  "
                 f"10% [{m10:.3f}..{M10:.3f}]"
             )
@@ -247,7 +247,7 @@ class Formatter:
                 f"{Formatter.ohm(row.r2)}  "
                 f"{Formatter.ohm(row.r3)}  "
                 f"{Formatter.ohm(row.rsum)}  "
-                f"VBAT_OK_PROG={row.v_prog:.3f}V [1% {vpmin1:.3f}..{vpmax1:.3f}; 10% {vpmin10:.3f}..{vpmax10:.3f}]  "
+                f"VBAT_OK_PROG={row.v_prog:.3f}V [1% {vpmin1:.3f}..{vpmax1:.3f}; 10% {vpmin10:.3f}..{vpmax10:.3f}] "
                 f"VBAT_OK_HYST={row.v_hyst:.3f}V [1% {vhmin1:.3f}..{vhmax1:.3f}; 10% {vhmin10:.3f}..{vhmax10:.3f}]"
             )
 
